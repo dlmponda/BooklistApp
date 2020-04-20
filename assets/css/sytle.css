@@ -12,7 +12,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(56, 56, 56, 0.384);
+    background-color: rgba(56, 56, 56, 0.192);
 }
 
 section{
@@ -41,7 +41,8 @@ color: rgb(83, 83, 83);
 
 header i{
     font-size: 39px;
-  color: rgb(67, 135, 194);
+    color: rgba(20, 20, 20, 0.438);
+    text-shadow: 5px 1px 10px rgba(99, 99, 99, 0.5);
     }
 
 main{
@@ -61,29 +62,31 @@ main input{
     height: 30px;
     border: 1px solid rgba(192, 192, 192, 0.486);
     padding-left: 5px;
-    background-color: rgba(56, 56, 56, 0.103);
+    background-color: rgba(255, 255, 255, 0.404);
     /* color: rgb(219, 219, 219); */
     font-size: 16px;
 }
 
 main input:focus{
     transition: ease 0.4s;
-    /* color: black; */
-    background-color: rgba(255, 255, 255, 0.404);
+    background-color: rgba(255, 255, 255, 0.788);
 }
 
 main .submit-btn{
-    background-color: rgb(67, 135, 194);
-    color: blanchedalmond;
+    background-color:  rgba(20, 20, 20, 0.473);
+    color: rgb(255, 255, 255);
     cursor: pointer;
-    transition: ease 0.4s;
+    transition: ease-in-out 0.3s;
     height: 35px;
-    font-weight: bolder;
+    /* font-weight: bolder; */
     text-transform: uppercase;
+    /* border-radius: 5px; */
 }
 
 main .submit-btn:hover{
-    background-color: rgb(0, 136, 255);
+    background-color:  rgba(20, 20, 20, 0.671);
+
+    border-radius: 10px;
 }
 
 main .booklist{
@@ -91,13 +94,12 @@ main .booklist{
 }
 main table{
     width: 100%;
+  
 }
 main table thead{
     /* background-color: rgba(67, 135, 194, 0.534); */
     background-color: rgba(56, 56, 56, 0.103);
-
- 
-height: 35px;
+    height: 35px;
 }
 
 footer{
