@@ -4,40 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BooklistApp</title>  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/sytle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
 </head>
 <body>
         <section>
             <header>
                 <div>
+                <!-- <i class="fas fa-book-open"></i> -->
+                <i class="fas fa-book"></i>
                 <h1 class="h1">MyBookList </h1>
                 </div>
             </header>
             <main>
                 <div>
                     <form>
-                    <div  >
+                    <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" id="title"  >
                     </div>
             
-                    <div  >
+                    <div class="form-group">
                         <label for="Author"  >Author</label>
                         <input type="text" id="author"  >
                     </div>
             
-                    <div  >
+                    <div class="form-group">
                         <label for="isbn"  >ISBN#</label>
                         <input type="text" id="isbn"  >
                     </div>
             
-                    <input type="submit" value="Add Book"  >
+                    <input type="submit" value="Add Book"  class="submit-btn">
             
                     </form>
                 </div>
-                <div>
-                    <div>
-
-                    </div>
+                <div class="booklist">
+                    
+                        <table class="table">
+                            <thead>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>ISBN</th>
+                                <th colspan="2"></th>
+                                <th></th>
+                            </thead>
+                    
+                            <tbody id="book-list">
+                                <!-- will dynamically add a row in js-->
+                            </tbody>
+                        </table>
+                        </form>
+                    
                 </div>
             </main>
             <footer>
