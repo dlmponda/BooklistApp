@@ -1,6 +1,26 @@
  
+function Book(title,author,ISBN){
+    this.title = title;
+    this.author = author;
+    this.ISBN = ISBN;
+}
+
+
+
 // custom method 
 const method = {
+
+    displayInput: (book) => {
+        const {title,author,ISBN} = book
+        const bookList = document.querySelector("#book-list");
+        const tr = document.createElement("tr");
+        tr.innerHTML = ` <td>${title}</td>
+        <td>${author}</td>
+        <td>${ISBN}</td>
+        `
+
+        bookList.appendChild(tr);
+    },
     showAlert: (message, className) => {
         const alterMessage = document.createElement("div");
         alterMessage.className = `alert ${className}`;
@@ -27,10 +47,11 @@ const validation = (e) =>{
 
     if (title === "" || author === "" || ISBN === "") {
         method.showAlert('Please fill in all fields', 'redMessage')
-       
-    } else {
-        
-       
+    } else {  
+        const book = new Book(title,author,ISBN);
+        method.displayInput(book);
+
+        // console.log(book)
     }
 
 }
