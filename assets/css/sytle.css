@@ -170,6 +170,14 @@ main table td{
     border: none;
     width: 100%;
 }
+.delete-btn{
+    color: white;
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    background-color: rgb(143, 6, 6);
+    border-radius: 100%;
+   
+}
  
 
 footer{

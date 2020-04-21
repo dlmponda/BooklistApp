@@ -10,18 +10,52 @@ function Book(title,author,ISBN){
 // custom method 
 const method = {
 
-    displayInput: (book) => {
-        const {title,author,ISBN} = book
-        const bookList = document.querySelector("#book-list");
-        const tr = document.createElement("tr");
-        tr.innerHTML = ` <td>${title}</td>
-        <td>${author}</td>
-        <td>${ISBN}</td>
-        `
-
-        bookList.appendChild(tr);
+    getBooks: () =>{
+        let books;
+        if(localStorage.getItem('books') === null){
+            books = []; // return an empty array once
+        } else {
+            books = JSON.parse(localStorage.getItem("books"));  // return array 
+        }
+        return books;
     },
+
+    displayOutput : () => {
+        try{
+            if(JSON.parse(localStorage.getItem("books"))){
+                bookk = JSON.parse(localStorage.getItem("books"));
+                const bookList = document.querySelector("#book-list");
+        let tr= "";
+        
+        bookk.forEach(element => {
+           
+            const {title,author,ISBN} = element
+               tr+= ` <tr>
+                 <td>${title}</td>
+                <td>${author}</td>
+                <td>${ISBN}</td>
+                <td><b class="delete-btn">x</b></td> 
+                </tr>`
+        });
+
+        bookList.innerHTML=tr;
+            }
+        }
+        catch(e){
+
+        }
+    },
+
+    store: (book) => {
+        const books = method.getBooks();
+        books.push(book)
+        localStorage.setItem("books",JSON.stringify(books));
+        method.displayOutput();
+    },
+
     showAlert: (message, className) => {
+        if(document.querySelector(".redMessage")){
+        }else{
         const alterMessage = document.createElement("div");
         alterMessage.className = `alert ${className}`;
         alterMessage.appendChild(document.createTextNode(message));
@@ -37,6 +71,13 @@ const method = {
 
         setTimeout(()=> document.querySelector('.remove').remove(),3500)
     }
+    },
+
+    clearFields: () => {
+         document.querySelector("#title").value="";
+         document.querySelector("#author").value="";
+          document.querySelector("#ISBN").value="";
+    }
 }
 
 const validation = (e) =>{
@@ -49,9 +90,9 @@ const validation = (e) =>{
         method.showAlert('Please fill in all fields', 'redMessage')
     } else {  
         const book = new Book(title,author,ISBN);
-        method.displayInput(book);
 
-        // console.log(book)
+        method.store(book);
+        method.clearFields();
     }
 
 }
@@ -59,6 +100,10 @@ const validation = (e) =>{
 // 01 Event Listener
  document.querySelector("form").addEventListener("submit", validation)
 
+
+ 
+
+ method.displayOutput();
 
 
 
