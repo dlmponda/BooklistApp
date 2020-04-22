@@ -122,6 +122,8 @@ main table thead{
 
 main table tr{
     /* background-color: tomato; */
+    margin-bottom: 20px;
+    height: 23px;
 }
 
 main table td{
@@ -146,16 +148,36 @@ main table td{
     border-color: rgb(219, 0, 0);
     background-color: rgb(219, 0, 0);
     transition: 5s;
+    text-align: center;
+
 }
 
-
-.remove{
+.greenMessage {
     margin: 0px;
     margin-bottom: 10px;
     border-radius: 3px;
     width: 100%;
     height: 33px;
-    
+    color: white;
+    padding-left:10px ;
+    padding-top:5px ;
+    padding-bottom:10px ;
+    text-align: left;
+    border-style: solid;
+    border-color: rgba(54, 134, 0);
+    background-color: rgba(54, 134, 0);
+    transition: 5s;
+    text-align: center;
+}
+
+
+.remove{
+    text-align: center;
+    margin: 0px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    width: 100%;
+    height: 33px;
     color: white;
     padding-left:10px ;
     padding-top:5px ;
@@ -164,6 +186,8 @@ main table td{
     border-style: solid;
     transition: 2s;
     opacity: 0;
+    text-align: center;
+
 }
 
 #editForm input {
@@ -171,13 +195,25 @@ main table td{
     width: 100%;
 }
 .delete-btn{
-    color: white;
+    color: rgb(114, 0, 0);
     font-size: 15px;
-    padding: 5px 10px 5px 10px;
-    background-color: rgb(143, 6, 6);
+    padding: 5px 5px 5px 5px;
+    /* background-color: rgb(143, 6, 6); */
     border-radius: 100%;
-   
+    cursor: pointer;
+    display: block;
+    transition: ease 0.1s;
 }
+
+.delete-btn:hover{
+    transform: rotate(-20deg);
+    color: rgb(202, 0, 0);
+}
+
+a{
+    text-decoration: none;
+}
+ 
  
 
 footer{

@@ -21,29 +21,47 @@ const method = {
     },
 
     displayOutput : () => {
-        try{
-            if(JSON.parse(localStorage.getItem("books"))){
-                bookk = JSON.parse(localStorage.getItem("books"));
-                const bookList = document.querySelector("#book-list");
-        let tr= "";
         
-        bookk.forEach(element => {
-           
+        const bookList = document.querySelector("#book-list");
+        bookk = JSON.parse(localStorage.getItem("books"));
+        bookList.innerHTML="";
+         bookk.forEach(element => {
             const {title,author,ISBN} = element
-               tr+= ` <tr>
-                 <td>${title}</td>
+              let tr = document.createElement("tr")
+              tr.innerHTML=`  
+                <td>${title}</td>
                 <td>${author}</td>
-                <td>${ISBN}</td>
-                <td><b class="delete-btn">x</b></td> 
-                </tr>`
+                <td>${ISBN}</td> 
+                <td><a href="#" id="delete" class="fas fa-trash-alt delete-btn"></a> </td> 
+                 `
+                bookList.appendChild(tr)
         });
 
-        bookList.innerHTML=tr;
-            }
-        }
-        catch(e){
 
-        }
+
+        // try{
+        //     if(JSON.parse(localStorage.getItem("books"))){
+        //         bookk = JSON.parse(localStorage.getItem("books"));
+               
+        // bookk.forEach(element => {
+        //     const {title,author,ISBN} = element
+
+        //       let tr = document.createElement("tr")
+        //       tr.innerHTML ` <tr class="delete">
+        //          <td>${title}</td>
+        //         <td>${author}</td>
+        //         <td>${ISBN}</td>
+        //         <td class="delete"><b class="delete-btn">x</b></td> 
+        //         </tr>`
+        //         bookList.appendChild(tr)
+        // });
+
+        
+        //     }
+        // }
+        // catch(e){
+
+        // }
     },
 
     store: (book) => {
@@ -51,6 +69,8 @@ const method = {
         books.push(book)
         localStorage.setItem("books",JSON.stringify(books));
         method.displayOutput();
+        method.showAlert('Book Added', 'greenMessage')
+
     },
 
     showAlert: (message, className) => {
@@ -71,6 +91,26 @@ const method = {
 
         setTimeout(()=> document.querySelector('.remove').remove(),3500)
     }
+    },
+
+    removeBook: (e) => {
+            if(e.target.classList.contains("delete-btn")){
+               const ISBN = e.target.parentElement.previousElementSibling.textContent
+                console.log(ISBN)
+               const book = method.getBooks();
+                console.log(book)
+                book.forEach((element,index) => {
+                    if(element.ISBN === ISBN){
+                        book.splice(index,1)
+                    }
+                });
+
+             localStorage.setItem("books",JSON.stringify(book));
+             method.displayOutput();
+             method.showAlert('Book Removed', 'greenMessage')
+
+            }
+           
     },
 
     clearFields: () => {
@@ -101,9 +141,14 @@ const validation = (e) =>{
  document.querySelector("form").addEventListener("submit", validation)
 
 
- 
+
 
  method.displayOutput();
+
+ const icon = document.querySelector("#book-list")
+
+ icon.addEventListener("click", method.removeBook)
+
 
 
 
