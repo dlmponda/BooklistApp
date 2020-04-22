@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "book list application",
   "main": "index.js",
+  "homepage": "https://dlmponda.github.io/BooklistApp", 
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d dist"
   },
   "author": "daniel mponda",
   "license": "ISC",
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "gh-pages": "^2.2.0"
+  }
 }
