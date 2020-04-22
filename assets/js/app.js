@@ -23,7 +23,11 @@ const method = {
     displayOutput : () => {
         
         const bookList = document.querySelector("#book-list");
-        bookk = JSON.parse(localStorage.getItem("books"));
+
+        try{
+            if(JSON.parse(localStorage.getItem("books"))){
+                bookk = JSON.parse(localStorage.getItem("books"));
+
         bookList.innerHTML="";
          bookk.forEach(element => {
             const {title,author,ISBN} = element
@@ -37,6 +41,10 @@ const method = {
                 bookList.appendChild(tr)
         });
 
+
+            }
+        }catch(e){}
+        
 
 
         // try{
